@@ -58,31 +58,27 @@ Abre [http://localhost:3000](http://localhost:3000)
 
 ## 🗄️ Estructura de Base de Datos
 
-clientes        → datos de clientes
-citas           → citas agendadas con estado y origen
-recordatorios   → log de mensajes enviados
-alertas_seguros → alertas de pólizas detectadas
-polizas         → pólizas activas con fecha de vencimiento
+| Tabla | Descripción |
+|---|---|
+| clientes | Datos de clientes registrados |
+| citas | Citas agendadas con estado y origen |
+| recordatorios | Log de mensajes enviados |
+| alertas_seguros | Alertas de pólizas detectadas |
+| polizas | Pólizas activas con fecha de vencimiento |
 
 ## 📁 Estructura del Proyecto
-broker-dashboard/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── actions/
-│       ├── citas.ts
-│       ├── recordatorios.ts
-│       └── polizas.ts
-├── components/
-│   ├── header.tsx
-│   ├── sidebar.tsx
-│   ├── citas/
-│   ├── recordatorios/
-│   ├── alertas/
-│   └── polizas/
-└── lib/
-└── supabase.ts
-
+| Ruta | Descripción |
+|---|---|
+| app/page.tsx | Dashboard principal |
+| app/layout.tsx | Layout con sidebar y header |
+| app/actions/citas.ts | Server actions de citas |
+| app/actions/recordatorios.ts | Server actions de recordatorios |
+| app/actions/polizas.ts | Server actions de pólizas |
+| components/citas/ | Gestión de citas |
+| components/recordatorios/ | Gestión de recordatorios |
+| components/alertas/ | Gestión de alertas |
+| components/polizas/ | Gestión de pólizas |
+| lib/supabase.ts | Cliente Supabase |
 ## 👨‍💻 Desarrollado por
 
 Jose Gaviño — [GitHub](https://github.com/josegavinov)
