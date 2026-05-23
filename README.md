@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Aegis Broker — Dashboard de Automatización
 
-## Getting Started
+Sistema SaaS de automatización para brokers de seguros. Gestiona citas, recordatorios automáticos vía WhatsApp y alertas de pólizas próximas a vencer.
 
-First, run the development server:
+## ✨ Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 📅 **Agendamiento de citas** — desde el dashboard o directamente por WhatsApp con IA
+- 💬 **Notificaciones automáticas** — confirmaciones y recordatorios 24h antes vía WhatsApp
+- 🛡️ **Gestión de pólizas** — alertas automáticas 30 días antes del vencimiento
+- 📊 **Dashboard en tiempo real** — vista completa de citas, recordatorios y alertas
+- 🤖 **IA integrada** — extracción inteligente de datos desde mensajes de WhatsApp
+
+## 🏗️ Stack Tecnológico
+
+| Capa | Tecnología |
+|---|---|
+| Frontend | Next.js 15 + Tailwind CSS + shadcn/ui |
+| Base de datos | Supabase (PostgreSQL) |
+| Automatización | n8n (self-hosted en Railway) |
+| WhatsApp | Twilio API |
+| IA | OpenRouter (GPT-4o-mini) |
+| Deploy | Vercel |
+
+## 🔄 Flujos Automatizados
+Flujo 2 → Pólizas por vencer    → WhatsApp al broker (diario)
+Flujo 3 → Cita agendada         → WhatsApp de confirmación (cada minuto)
+Flujo 4 → Recordatorio 24h      → WhatsApp al cliente (cada hora)
+Flujo 5 → Mensaje WhatsApp      → IA agenda la cita automáticamente
+
+## 🚀 Instalación
+
+### Prerrequisitos
+- Node.js 18+
+- Cuenta en Supabase
+- Cuenta en Twilio
+- n8n desplegado en Railway
+- Cuenta en OpenRouter
+
+### Variables de entorno
+
+Crea un archivo `.env.local`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Instalación local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/tu-usuario/broker-dashboard
+cd broker-dashboard
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abre [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## 🗄️ Estructura de Base de Datos
 
-To learn more about Next.js, take a look at the following resources:
+clientes        → datos de clientes
+citas           → citas agendadas con estado y origen
+recordatorios   → log de mensajes enviados
+alertas_seguros → alertas de pólizas detectadas
+polizas         → pólizas activas con fecha de vencimiento
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Estructura del Proyecto
+broker-dashboard/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── actions/
+│       ├── citas.ts
+│       ├── recordatorios.ts
+│       └── polizas.ts
+├── components/
+│   ├── header.tsx
+│   ├── sidebar.tsx
+│   ├── citas/
+│   ├── recordatorios/
+│   ├── alertas/
+│   └── polizas/
+└── lib/
+└── supabase.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👨‍💻 Desarrollado por
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Jose Gaviño — [GitHub](https://github.com/josegavinov)
