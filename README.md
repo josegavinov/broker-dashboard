@@ -1,4 +1,4 @@
-# 🛡️ Aegis Broker — Dashboard de Automatización
+# 🛡️ Broker de Seguros — Dashboard de Automatización
 
 Sistema SaaS de automatización para brokers de seguros. Gestiona citas, recordatorios automáticos vía WhatsApp y alertas de pólizas próximas a vencer.
 
