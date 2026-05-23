@@ -11,6 +11,7 @@ import { PolizasManager } from '@/components/polizas/polizas-manager'
 import { CitasManager } from '@/components/citas/citas-manager'
 import { RecordatoriosManager } from '@/components/recordatorios/recordatorios-manager'
 import { AlertasManager } from '@/components/alertas/alertas-manager'
+export const revalidate = 0
 async function getCitas() {
   const { data } = await supabase
     .from('citas')
